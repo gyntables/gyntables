@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" dir="ltr" id="html-main" lang="ru"><head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link type="text/css" rel="stylesheet" href="CSSJQUERYUI.css">
+
+
+  <link type="text/css" rel="stylesheet" href="CSSCATSTYLE.css" media="all">
+
+
+  <link type="text/css" rel="stylesheet" href="CSSPRINT.css" media="print">
+
+
+
+<script type="text/javascript">
+function insertText () {
+    document.getElementById('i8, i27').innerHTML = "test";
+}
+</script>
+<style type="text/css">  /*
+.i8{
+animation:1s blinker linear infinite;
+color: #f00;
+
+}
+.i27{
+animation:1s blinker linear infinite;
+color: #f00;
+
+}
+
+
+.blink_text a {color:#f00;}
+@keyframes blinker {
+0% { opacity: 1.0; }
+50% { opacity: 0.0; }
+100% { opacity: 1.0; }
+}
+*/
+</style>
+ <style>
+.single { display: none; }
+.single.active { display: block; }
+  </style>
+
+  <style>
+	body {
+   	   background: #fff0f0;
+	   color: #fff0f0;
+           width: 100%;margin:0 auto;
+
+   }
+   select{
+
+    height: 40px;
+    border: none;
+    background: rgb(181,43,59);
+    color: white;
+   /* border-radius: 4px; */
+   font-family: Georgia;
+    font-size: 16px;
+  /*  margin-right: 30px;
+    padding-left: 14px; */
+}
+
+   </style>
+
+   <style>
+.filterDiv {
+  float: center;
+  /*background-color: #2196F3; */
+  color: #ffffff;
+  width: 100%;
+  line-height: 100%;
+  text-align: center;
+  margin: 2px;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.container {
+
+  overflow: hidden;
+}
+
+  /* Style the buttons */
+.btn  {
+  /* display: inline-block;*/
+  margin: 0 auto;
+  width : 100%;
+  height: 50px;
+  font-size: 18px;
+  color: rgb(255,255,255);
+  font-family:Georgia;
+  text-decoration: none;
+   padding: .5em .5em;
+   border: none;
+  outline: none;
+  /*border-right: solid rgba(13,20,27,.5);
+  border-top: 1px solid rgba(270,278,287,.01);*/
+  background-color: rgb(181,43,59);
+  /*background-image:
+   radial-gradient(1px 60% at 0% 50%, rgba(255,255,255,.3), transparent),
+   radial-gradient(1px 60% at 100% 50%, rgba(255,255,255,.3), transparent),
+   linear-gradient(rgb(181,43,59), rgb(252,179,185));*/
+}
+.btn:focus {
+  color: rgb(255,255,255);
+  background-image:
+   linear-gradient(rgb(231,152,161), rgb(181,43,59));
+
+}
+.btn:focus:hover {
+  border-top: 1px solid rgb(49,87,107);
+  background-image:
+   linear-gradient(rgb(181,43,59), rgb(252,179,185));
+}
+.btn:hover {
+  background-image:
+   radial-gradient(1px 45% at 0% 50%, rgba(0,0,0,.6), transparent),
+   radial-gradient(1px 45% at 100% 50%, rgba(0,0,0,.6), transparent);
+}
+.btn:active {
+  background-image:
+   radial-gradient(45% 45% at 50% 100%, rgba(255,255,255,.9), rgba(255,255,255,0)),
+   linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.3));
+  box-shadow:
+   inset rgba(162,95,42,.4) 0 0 0 1px,
+   inset rgba(255,255,255,.9) 0 0 1px 3px;
+}
+/*
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: #2196F3;
+} */
+</style>
+
+
+
+  <script type="text/javascript" src="JSJQUERY.js"></script>
+<script type="text/javascript" src="JSJQUERYUI.js"></script>
+<script type="text/javascript" src="JSMAIN.js"></script>
+ <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+  <script type="text/javascript" src="JSJQUERY.js"></script>
+<script type="text/javascript" src="JSJQUERYUI.js"></script>
+<script type="text/javascript" src="JSMAIN.js"></script>
+<script type="text/javascript">
+function showSingleDiv(selector) {
+  const prevBlockE3 = document.querySelector('.single.active'),
+        currBlockE3 = document.querySelector(selector);
+  if (!currBlockE3 || prevBlockE3 === currBlockE3) return;
+  prevBlockE3 && prevBlockE3.classList.remove('active');
+  currBlockE3.classList.add('active');
+
+}
+
+</script>
+
+ <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+
+ <script> /*
+showSingleDiv("all")
+function showSingleDiv(c) {
+  var x, i;
+  x = document.querySelector('.single');
+  y = document.querySelector(c);
+  if (y == 'all') y = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], 'show');
+    if (x[i].className.indexOf(y) > -1) w3AddClass(x[i], 'show');
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+ /*
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}   */
+ </script>
+   */
+  <!--  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
+
+
+</head><body>
+ <script>
+
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var Containery = document.getElementById("container");
+var btns = Containery.getElementsByClassName("single");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("active", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
+  <font style="font-family:Georgia; font-style:normal; color:#b52b3b;"><p style="text-align:center;font-#000000size:20;">
+  <strong>МЕРОПРИЯТИЯ ПРИ БЕРЕМЕННОСТИ</strong>
+  </p></font>
+  <hr>
+ <div id="myBtnContainer">
+ <table style="width: 100%; " >
+
+<tr>
+<td >  <button align="left" class="btn active "  onclick="filterSelection('cars') " > Вводные</button> </td>
+<td>  <button  class="btn"  onclick="filterSelection('fruits')">Расчёты</button> </td>
+
+</tr>
+</div></table>
+<center><div class="i8" ><span><p>тестовый режим</p></span></div> </center>
+ <div class="container">
+    <div class="filterDiv cars">
+<div id="content" data-time="&lt;?php echo time(); ?&gt;">
+
+<form onsubmit="return pregnancyCalc();" name="zachatie">
+  <table style="width: 100%;" class="calc-table"  border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+
+        <td align="center" width="100%">
+        <div class="calc-wrapper">
+         <p style="text-align: left;font-family:Georgia;">
+ВЫБЕРИТЕ УСЛОВИЯ ДЛЯ РАСЧЁТА:
+</p> </div>
+
+        <select id="method" name="method">
+        <option value="menstr">Первый день последней менструации</option>
+        <option value="conception">Дата зачатия</option>
+        <option value="zab">Дата забора яйцеклетки</option>
+        <option value="pods">Дата переноса 5-дневного эмбриона</option>
+        <option value="isn">Дата иснеминации</option>
+        <option value="ktr">КТР эмбриона/плода</option>
+        <option value="man">Ввести срок вручную</option>
+        <option value="uzd">Дата предыдущего УЗИ</option>
+        </select>
+        </td></tr>
+
+
+		 <tr>
+        <td align="left" width="50px"> <input id="menstrday" class="picker" name="menstr" size="15" placeholder="дд.мм.гггг" type="text"> <input id="ktr" name="ktr" size="15" placeholder="0" style="display: none;" type="text">
+        <div class="man-wrap" style="display: none; width: 160px;"><input id="man-w" name="man-w" size="3" maxlength="3" placeholder="0" type="text"> нед. <input id="man-d" name="man-d" size="3" maxlength="3" placeholder="0" type="text"> дн. </div>
+
+		           <span class="ktr-desc" style="display: none;">  мм( от 2 до 83 мм)</span>
+         </td>
+		  </tr>
+      <tr class="last tr-menstr">
+        <td colspan="3" align="center">
+        <table class="menstr-table" border="0" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td align="left" > Средняя длина <strong>цикла</strong> (дней):
+              </td>
+              <td align="left"> <input id="cycle" name="cycle" size="3" maxlength="3" placeholder="28" type="text" ><br> <span id="cycle-desc" class="desc">21 - 35</span> </td>
+            </tr>
+            <tr>
+              <td align="left" > Средняя длина
+ <strong>второй фазы</strong> (дней):</td>
+              <td align="left"> <input id="luteal" name="luteal" size="3" maxlength="3" placeholder="14" type="text"><br> <span id="luteal-desc" class="desc">9 - 16</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+      <tr class="last tr-ktr" style="display: none;">
+        <td colspan="3" align="center">
+        <table class="menstr-table" border="0" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+             <td align="left" ><strong>На дату:</strong>
+
+</td>
+              <td align="reigth"> <input id="ktr-date" class="picker" name="ktr-date" size="15" placeholder="дд.мм.гггг" type="text"><br> <span class="desc"> Дата определения КТР</span> <br>
+
+</td>
+            </tr>
+            <tr>
+              <td align="left" > <strong>Метод расчёта:</strong>
+
+</td>
+              <td align=left">
+              <select id="ktr-method" name="ktr-method">
+              <option value="kvc" data-at="2" data-to="83">Карпов,
+Воронин, Чубкин</option>
+              <option value="j" data-at="5" data-to="52">Ph. Jeanty</option>
+              <option value="h" data-at="6" data-to="81">M. Hansmann</option>
+              <option value="p" data-at="1" data-to="26">Pavitra
+Delpachitra</option>
+              <option value="ms" data-at="1" data-to="82">McLennan, Schluter</option>
+              </select>
+              <br><span class="desc"></span>
+
+</td>
+            </tr>
+          </tbody>
+        </table>
+
+</td>
+      </tr>
+      <tr class="last tr-man" style="display: none;">
+        <td colspan="3" align="center">
+        <table class="menstr-table" border="0" cellpadding="0" cellspacing="0">
+          <tbody>
+		  <center>
+            <tr>
+              <td > На <strong>дату:</strong> </td>
+              <td> <input id="man-date" class="picker" name="man-date" size="15" placeholder="дд.мм.гггг" type="text"> <br><span class="desc"> Укажите дату, когда был определен данный срок</span> </td>
+            </tr>
+         </center>
+         </tbody>
+        </table>
+		</td>
+        </tr>
+
+
+      <tr class="last tr-uzd" style="display: none;">
+        <td colspan="3" align="center">
+        <table class="menstr-table" border="0" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td align="left" > Установленный <strong>срок
+беременности:</strong>
+
+</td>
+              <td align="left">
+             <div class="uzd-wrap" ><input id="uzd-w" name="uzd-w" size="3" maxlength="3" placeholder="0" type="text"> нед. <input id="uzd-d" name="uzd-d" size="3" maxlength="3" placeholder="0" type="text"> дн.</div>
+              <span class="desc"></span>
+
+</td>
+            </tr>
+          </tbody>
+        </table>
+
+</td>
+      </tr>
+      <tr class="last">
+        <td colspan="3" align="left"> <label class="option" for="preg-col-1"> <input id="preg-col-1" name="preg-col" checked="checked" value="0" class="preg-col" type="radio"> Одноплодная
+        </label> <label class="option" for="preg-col-2"> <input id="preg-col-2" name="preg-col" value="1" class="preg-col" type="radio">
+Многоплодная </label> </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<table style="width: 100%;" class="calc-table"  border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td>
+<div class="calc-wrapper"> <strong>Ориентировочная
+дата зачатия</strong></td><td>
+<input size="8" id="zach" class="i8" name="zach"><br>
+<strong></strong><br><span class="desc">+/-7 дней (вариабельность менструального цикла)</span> </td>
+</div>  </tr>
+<tr>
+<td>
+<div class="calc-wrapper"><strong>На дату</strong></td><td><input algin="rigth" size="8" id="date" class="i8 picker" name="date"></td></tr><br>
+<tr><td><strong>акушерский срок беременности</strong></a></td><td><input size="27" id="preg-period" class="i27" name="preg-period"> </div></td></tr>
+<tr><td><div class="calc-wrapper"> <strong>Значение медианы для данного срока беременности:</strong>
+</div> </td></tr>
+<tr>
+<td><div class="calc-wrapper">масса плода </td><td> <input size="27" id="ves" class="i27" name="ves" style="margin: 0pt 3px 3px;"></td></tr>
+<tr>
+<td>рост плода стоя </td><td><input size="27" id="rost" class="i27" name="rost" style="margin: 0pt 3px 3px;"> </td>
+</div> </tr><tr><td>
+<div > <strong>Ранняя постановка на учет
+с получением пособия (<a>до
+12 недель</a>):</strong><span class="atto lp">до </span><input size="8" id="d12" class="i8" name="d12">
+</div>  </td></tr>  </tbody></table>
+</div>    </div>  </div>
+
+<div class="container">
+<div class="filterDiv fruits">
+
+<center>
+<div class="form-group">
+<select onchange="showSingleDiv(this.value)">
+<option disabled="disabled" selected="selected">Выберите мероприятие</option>
+<option value="#id1"> УЗИ</option>
+<option value="#id2"> Комбинированный скрининг (I триместр)</option>
+<option value="#id3"> Биохимический скрининг (II триместр)</option>
+<option value="#id4"> Скрининговое УЗИ №2 (II триместр)</option>
+<option value="#id5"> Декретный отпуск</option>
+<option value="#id6"> Неизрасходованный отпуск</option>
+<option value="#id7"> УЗИ №3 (III триместр)</option>
+<option value="#id8"> Предполагаемая дата родов</option>
+<!--<option value="#id9"> Показать все</option> -->
+</select>
+</div>  </center>
+<hr>
+<div class="calc-wrapper">
+
+ <div id="id1" class="single">
+
+<p style="text-align: center; font-family: Georgia"><b>УЗИ </b><br> <br>7 недель 0 дней - 8 недель 0 дней
+</p>
+<table style="width: 100%; height: 50px;" class="calc-table calc-table-res" cellpadding="0" cellspacing="0" cols="2">
+  <tbody>
+    <tr>
+      <td  width="50%" > Рекомендованный период </td>
+
+   <td algin="center"  class="dd" > <span class="atto">с</span> <input size="8" id="d7" class="i8" name="d7"> <span class="atto">по</span> <input size="8" id="d8" class="i8" name="d8"> </td>
+    </tr>
+
+
+  </tbody>
+</table>
+<p style="text-align: center; font-family: Georgia;">
+Определение маточного расположения, количества
+эмбрионов и наличие
+сердцебиения.
+</p>
+</div> <br>
+
+<div id="id2" class="single">
+
+<p style="text-align: center;font-family: Georgia"><strong><b>КОМБИНИРОВАННЫЙ СКРИНИНГ:</b><br><br> <br>Анализ крови (PAPP-A, b-ХГЧ):</strong><br><br>
+11 недель 0 дней - 13 недель 6 дней
+</p>
+<table style="width: 100%; height: 50px;" class="calc-table calc-table-res" cellpadding="0" cellspacing="0" cols="2">
+  <tbody>
+    <tr>
+       <td algin="center" class="dd" width="50%"> Рекомендованный период  </td>
+
+     <td class="dd"> <span class="atto">с</span> <input size="8" id="dd8" class="i8" name="dd8"> <span class="atto">по</span> <input size="8" id="dd13-6" class="i8" name="dd13-6">  </td>
+
+
+
+
+  </tbody>
+</table>
+
+<p style="text-align: center; font-family: Georgia"><strong>Скрининговое УЗИ №1:</strong><br><br>11 недель 0 дней - 13 недель 6
+дней
+</p>
+<table style="width: 100%; height: 50px;" class="calc-table calc-table-res" cellpadding="0" cellspacing="0" cols="2">
+  <tbody>
+    <tr>
+       <td algin="center" class="dd" width="50%"> Рекомендованный период<br> </td>
+
+    <td class="dd"><span class="atto">с</span> <input size="8" id="d11" class="i8" name="d11"> <span class="atto">по</span> <input size="8" id="d13-6" class="i8" name="d13-6"> </td>
+
+    </tr>
+
+  </tbody>
+</table>
+<p style="text-align: center;font-family: Georgia">
+Комбинированный скрининг риска
+хромосомных (синдром
+Дауна, Эдвардса, Патау) и других патологий.
+Определение состояния плода.<br><br>
+</p>
+</div>
+
+<div id="id3" class="single">
+
+<p style="text-align: center;font-family: Georgia"><b>БИОХИМИЧЕСКИЙ СКРИНИНГ:</b><br><br><strong>Анализ крови на АФП, b-ХГЧ, неконъюгированный эстрадиол (тройной скрининг), ингибин А (четверной скрининг)</strong> <br><br>
+15 недель 0 дней - 16 недель 6 дней
+</p>
+<table style="width: 100%; height: 50px;" class="calc-table calc-table-res" cellpadding="0" cellspacing="0" cols="2">
+  <tbody>
+    <tr>
+     <td algin="center" class="dd" width="50%"> Рекомендованный период </td>
+     <td algin="center"class="dd"> <span class="atto">с</span> <input size="8" id="d15" class="i8" name="d15"> <span class="atto">по</span> <input size="8" id="d16-6" class="i8" name="d16-6">  </td>
+    </tr>
+
+  </tbody>
+</table>
+<p style="text-align: center;font-family: Georgia">
+Только для тех, кто не сдал PAPP-A и
+b-ХГЧ в I триместре беременности.
+</p>
+</div><br>
+
+<div id="id4" class="single">
+
+<p style="text-align: center;font-family: Georgia"><b>Скрининговое УЗИ №2:</b><br><br>18 недель 0 дней - 20 недель 6 дней
+</p>
+<table style="width: 100%; height: 50px;" class="calc-table calc-table-res" cellpadding="0" cellspacing="0" cols="2">
+  <tbody>
+    <tr>
+      <td algin="center" class="dd" width="50%"> Рекомендованный период </td>
+      <td class="dd"> <span class="atto">с</span> <input size="8" id="d18" class="i8" name="d18"> <span class="atto">по</span> <input size="8" id="d20-6" class="i8" name="d20-6"> </td>
+    </tr>
+
+  </tbody>
+</table>
+<p style="text-align: center;font-family: Georgia">
+Определение состояния
+плода, цервикометрия.
+</p>
+</div><br>
+
+<div id="id5" class="single">
+
+ <p style="text-align: center;font-family: Georgia"><b>Декретный отпуск:</b></p>  <br><br>
+<table style="width: 100%; height: 50px;" class="calc-table calc-table-res" cellpadding="0" cellspacing="0" cols="2">
+  <tbody>
+    <tr>
+       <td algin="center"class="dd" width="50%"> Рекомендованный период </td>
+
+       <td> <input size="27" class="lp i27" id="dotp" name="dotp">
+          <div class="desc lp"> Дней декретного отпуска </div>
+	   </td>
+	</tr>
+    <tr>
+	  <td algin="center"  width="50%" class="od"> Оптимальный срок </td>
+      <td class="od"> <span class="atto">с</span> <input size="8" id="otp" class="i8" name="otp"> <span class="atto">по</span> <input size="8" id="otpto" class="i8" name="otpto"> </td>
+    </tr>
+  </tbody>
+</table>
+<p style="text-align: center;font-family: Georgia">
+До- и послеродовой
+отпуск у большинства беременных. </p>
+</div><br>
+
+<div id="id6" class="single">
+
+<p style="text-align: center;font-family: Georgia"><b>Неизрасходованный отпуск:</b>	</p>  <br> <br>
+<table style="width: 100%; height: 50px;" class="calc-table calc-table-res" cellpadding="0" cellspacing="0" cols="2">
+  <tbody>
+    <tr>
+      <td algin="center" class="dd" width="50%"> Рекомендованный период </td>
+
+      <td> <input maxlength="5" size="27" class="lp i27" id="notp" name="notp" placeholder="0">
+      <div class="desc lp"> Дней неизрасх. отпуска </div>
+      </td>
+	</tr>
+    <tr>
+	     <td algin="center"  width="50%" class="od"> Оптимальный срок </td>
+
+
+      <td class="od"> <span class="atto">с</span> <input size="8" id="notpat" class="i8" name="notpat"> <span class="atto">по</span> <input class="i8" id="notpto" class="td1" name="notpto"> </td>
+    </tr>
+  </tbody>
+</table>
+<p style="text-align: center;font-family: Georgia">
+Неизрасходованный
+отпуск.
+</p>
+</div><br>
+
+<div id="id7" class="single">
+
+<p style="text-align: center;font-family: Georgia"><b>УЗИ №3 (III триместр):</b><br><br>30 недель 0 дней - 34 недели 0 дней
+</p>
+<table style="width:100%;; height: 50px;" class="calc-table calc-table-res" cellpadding="0" cellspacing="0" cols="2">
+  <tbody>
+    <tr>
+      <td algin="center" class="dd" width="50%"> Рекомендованный период </td>
+      <td class="dd"> <span class="atto">с</span> <input size="8" id="d32" class="i8" name="d32"> <span class="atto">по</span> <input size="8" id="d34-6" class="i8" name="d34-6"> </td>
+    </tr>
+
+  </tbody>
+</table>
+<p style="text-align: center;font-family: Georgia">
+По показаниям —
+определение состояния плода.
+</p>  </div>
+</div>
+ <br>
+<div id="id8" class="single">
+<div class="calc-wrapper">
+<p style="text-align: center; font-family: Georgia;"><b>Предполагаемая дата родов:</b><br><br>37 недель 0 дней - 41 недель 6 дней
+</p>
+<table style="width: 100%; height: 50px;" class="calc-table calc-table-res" cellpadding="0" cellspacing="0" cols="2">
+  <tbody>
+    <tr>
+      <td algin="center" class="dd" width="50%"> Рекомендованный период </td>
+      <td algin="center" class="dd" width="50%"> <span class="atto">с</span> <input size="8" id="d38" class="i8" name="d38"> <span class="atto">по</span> <input size="8" id="d40-6" class="i8" name="d40-6"> </td>
+	</tr>
+
+
+    <tr class="last">
+	   <td algin="center"  width="50%" class="od"> Беременность 40 недель </td>
+       <td algin="center" class="od" width="50%"> <input size="27" class="i8" id="o40" name="o40"> </td>
+    </tr>
+
+
+
+  </tbody>
+</table>
+</div>  </div>
+</div>
+ </div>
+<hr>
+
+<center>
+<table style="width: 100%; height: 100%;"  cellpadding="0" cellspacing="0" cols="2">
+ <tr>
+ <td >  <center>
+ <img src="logo-serdce.gif" style="width:80px;" algin = "center" alt="">  </center>
+ </td></tr></table></center>
+ 	<hr>
+
+
+
+
+
+
+
+</body></html>
